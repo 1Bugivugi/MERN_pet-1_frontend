@@ -85,7 +85,7 @@ const RestaurantsList = (props) => {
     return (
         <Fragment>
             <div className="row pb-1">
-                <div className="input-group col-lg-4">
+                <div className="input-group col-lg-4 mb-2">
                     <input
                         type="text"
                         className={'form-control'}
@@ -103,11 +103,11 @@ const RestaurantsList = (props) => {
                         </button>
                     </div>
                 </div>
-                <div className="input-group col-lg-4">
+                <div className="input-group col-lg-4 mb-2">
                     <input
                         type="text"
                         className={'form-control'}
-                        placeholder={'Search by name'}
+                        placeholder={'Search by zipcode'}
                         value={searchZip}
                         onChange={onChangeSearchZip}
                     />
@@ -121,12 +121,12 @@ const RestaurantsList = (props) => {
                         </button>
                     </div>
                 </div>
-                <div className="input-group col-lg-4">
+                <div className="input-group col-lg-4 mb-1">
                     <select name="" id="" onChange={onChangeSearchCuisine}>
                         {
-                            cuisines.map(cuisine => {
+                            cuisines.map((cuisine, index) => {
                                 return (
-                                    <option value={cuisine}>{cuisine.slice(0, 20)}</option>
+                                    <option key={index} value={cuisine}>{cuisine.slice(0, 20)}</option>
                                 )
                             })
                         }
@@ -144,10 +144,10 @@ const RestaurantsList = (props) => {
             </div>
             <div className="row">
                 {
-                    restaurants.map((restaurant) => {
+                    restaurants.map((restaurant, index) => {
                         const address = `${restaurant.address.building}, ${restaurant.address.street}, ${restaurant.address.zipcode}`;
                         return (
-                            <div className={'col-lg-4 pb-1'}>
+                            <div className={'col-lg-4 pb-1'} key={index}>
                                 <div className="card">
                                     <div className="card-body">
                                         <h5 className="card-title">{restaurant.name}</h5>

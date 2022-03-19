@@ -22,7 +22,7 @@ const AddReview = (props) => {
     }
 
     const saveReview = () => {
-        var data = {
+        let data = {
             text: review,
             name: props.user.name,
             user_id: props.user.id,
@@ -40,6 +40,7 @@ const AddReview = (props) => {
                     console.log(e)
                 })
         } else {
+            console.log(data)
             RestaurantDataService.createReview(data)
                 .then(response => {
                     setSubmitted(true);
@@ -59,17 +60,17 @@ const AddReview = (props) => {
                         submitted ? (
                             <div>
                                 <h4>You submitted successfully!</h4>
-                                <Link to={'/restaurants/' + id} className={'btn btn-success'}>
+                                <Link to={`/restaurants/${id}/`} className={'btn btn-success'}>
                                     Back to Restaurant
                                 </Link>
                             </div>
                         ) : (
-                            <div>
+                            <div className={'d-flex align-items-center'}>
                                 <div className="form-group">
                                     <label htmlFor="description">{editing ? "Edit" : "Create"}</label>
                                     <input
                                         type="text"
-                                        className={'form-group'}
+                                        className={'form-group mx-2'}
                                         id={'text'}
                                         required
                                         value={review}
@@ -77,7 +78,7 @@ const AddReview = (props) => {
                                         name={'text'}
                                     />
                                 </div>
-                                <button onChange={saveReview} className={'btn btn-success'}>Submit</button>
+                                <button onClick={saveReview} className={'btn btn-success'}>Submit</button>
                             </div>
                         )
                     }

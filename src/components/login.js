@@ -48,7 +48,7 @@ const Login = (props) => {
                         />
                     </div>
 
-                    <Link to={'/'} className={'btn btn-success'} onClick={login}>
+                    <Link to={'/'} className={'btn btn-success mt-3'} onClick={login}>
                         Login
                     </Link>
                 </div>
